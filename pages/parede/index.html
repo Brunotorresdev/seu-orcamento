@@ -17,13 +17,14 @@
             <label for="input2">lagura em metros</label>
 
             <input type="number" id="input2" />
-            <button>Calcular</button>
+            <button onclick="calcularOrcamento()">Calcular</button>
           </div>
           <div class="display-title-and-table">
             <span>Veja aqui o que será necessário</span>
             <div
-              class="display-table"
-              style="background-color: #d9d9d9; width: 705px; height: 378px"
+              class="display-table" id="materialList"
+              style="background-color: #d9d9d9; width: 705px; height: 378px; color: black;"
+          
             >
           <ul style="color: black;">
             <li>100 tijolos</li>
@@ -34,5 +35,44 @@
         </div>
       </div>
     </section>
+  
   </body>
+  <script>
+    function calcularOrcamento() {
+      const input1 = parseFloat(document.getElementById("input1").value);
+      const input2 = parseFloat(document.getElementById("input2").value);
+
+
+      if(input1 <= 0 || input2 <= 0 || !input1 || !input2){
+        alert("verifique os campos")
+      } else {
+        
+      const area = input1 * input2;
+      const tijolos = Math.ceil(area) * 25;
+      const areia = Math.ceil(area) * 2;
+      const arisco = Math.ceil(area) * 2;
+      const cimento = Math.ceil(area) * 50;
+
+      
+
+      const materialList = document.getElementById("materialList");
+      materialList.innerHTML = ""; // Limpa a lista
+
+      const tijolosItem = document.createElement("li");
+      tijolosItem.textContent = `${tijolos} tijolos`;
+      materialList.appendChild(tijolosItem);
+      const areiaItem = document.createElement("li");
+      areiaItem.textContent = `${areia} carros de mão de areia`;
+      materialList.appendChild(areiaItem);
+      const ariscoItem = document.createElement("li");
+      ariscoItem.textContent = `${arisco} carros de mão de arisco`;
+      materialList.appendChild(ariscoItem);
+      const cimentoItem = document.createElement("li");
+      cimentoItem.textContent = `${cimento} KG de cimento`;
+      materialList.appendChild(cimentoItem);
+
+    }
+
+  }
+  </script>
 </html>
