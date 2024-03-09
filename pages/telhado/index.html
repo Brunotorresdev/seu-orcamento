@@ -17,7 +17,7 @@
             <label for="input2">lagura em metros</label>
 
             <input type="number" id="input2" />
-            <button>Calcular</button>
+            <button onclick="calcularorçamento()">Calcular</button>
           </div>
           <div class="display-title-and-table">
             <span>Veja aqui o que será necessário</span>
@@ -35,4 +35,12 @@
       </div>
     </section>
   </body>
+  <script>
+    function calcularorçamento() {
+      const input1 = document.getElementById("input1").value
+      console.log("input1 ", input1)
+      const input2 = document.getElementById("input2").value
+      console.log("input2 ", input2)
+    }
+  </script>
 </html>
