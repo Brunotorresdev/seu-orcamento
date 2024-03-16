@@ -12,62 +12,64 @@
         <div class="title">Orçamento para piso</div>
         <div class="display-menu-row">
           <div class="menu-options">
-            <label for="input1">altura em metros</label>
+            <label class="style-label" for="input1">altura em metros</label>
             <input type="number" id="input1" />
-            <label for="input2">lagura em metros</label>
+            <label class="style-label" for="input2">lagura em metros</label>
 
             <input type="number" id="input2" />
             <button onclick="calcularOrcamento()">Calcular</button>
           </div>
           <div class="display-title-and-table">
-            <span>Veja aqui o que será necessário</span>
-            <div
-              class="display-table" id="materialList"
-              style="background-color: #d9d9d9; width: 705px; height: 378px; color: black;"
-            >
-          <ul style="color: black;">
-            <li>100 tijolos</li>
-            <li>20 kg de cimento</li>
-          </ul>
-          </div>
+            <span class="style-label">Veja aqui o que será necessário</span>
+            <div class="display-table" id="materialList">
+              <ul style="color: black">
+                <!-- <li>100 tijolos</li>
+                <li>20 kg de cimento</li> -->
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="floating-button">
+        <a href="#" onclick="back()">
+          <img src="../../image/back.png" alt="Botão" />
+        </a>
       </div>
     </section>
   </body>
   <script>
+    function back() {
+      let caminhoAtual = window.location.pathname;
+      let novoCaminho = caminhoAtual.replace("/piso/", "/home/");
+      window.location.href = novoCaminho;
+    }
     function calcularOrcamento() {
       const input1 = parseFloat(document.getElementById("input1").value);
       const input2 = parseFloat(document.getElementById("input2").value);
 
-
-      if(input1 <= 0 || input2 <= 0 || !input1 || !input2){
-        alert("verifique os campos")
+      if (input1 <= 0 || input2 <= 0 || !input1 || !input2) {
+        alert("verifique os campos");
       } else {
-        
-      const area = input1 * input2;
-      const cimento = Math.ceil(area) * 25;
-      const areia = Math.ceil(area) * 1.5;
-      const brita = Math.ceil(area) * 0.5;
-    
-      
-      const materialList = document.getElementById("materialList");
-      materialList.innerHTML = ""; // Limpa a lista
+        const area = input1 * input2;
+        const cimento = Math.ceil(area) * 25;
+        const areia = Math.ceil(area) * 1.5;
+        const brita = Math.ceil(area) * 0.5;
 
-      const cimentoItem = document.createElement("li");
-      cimentoItem.textContent = `${cimento} Kg de cimento`;
-      materialList.appendChild(cimentoItem);
+        const materialList = document.getElementById("materialList");
+        materialList.innerHTML = ""; // Limpa a lista
 
-      const areiaItem = document.createElement("li");
-      areiaItem.textContent = `${areia} carro de mão de areia`;
-      materialList.appendChild(areiaItem);
+        const cimentoItem = document.createElement("li");
+        cimentoItem.textContent = `${cimento} Kg de cimento`;
+        materialList.appendChild(cimentoItem);
 
-      const britaItem = document.createElement("li");
-      britaItem.textContent = `${brita} carro de mão de brita`;
-      materialList.appendChild(britaItem);
+        const areiaItem = document.createElement("li");
+        areiaItem.textContent = `${areia} carro de mão de areia`;
+        materialList.appendChild(areiaItem);
 
+        const britaItem = document.createElement("li");
+        britaItem.textContent = `${brita} carro de mão de brita`;
+        materialList.appendChild(britaItem);
+      }
     }
-  }
   </script>
-
 </html>

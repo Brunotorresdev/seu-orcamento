@@ -10,16 +10,15 @@ function pageLaje() {
   window.location.href = novoCaminho;
 }
 
-
 function pageTelhado() {
   let caminhoAtual = window.location.pathname;
   let novoCaminho = caminhoAtual.replace("/home/", "/telhado/");
   window.location.href = novoCaminho;
 }
 
-
 function pagePiso() {
   let caminhoAtual = window.location.pathname;
   let novoCaminho = caminhoAtual.replace("/home/", "/piso/");
   window.location.href = novoCaminho;
 }
+
