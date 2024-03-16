@@ -12,82 +12,87 @@
         <div class="title">Orçamento para sua laje</div>
         <div class="display-menu-row">
           <div class="menu-options">
-            <label for="input1">comprimento em metros</label>
+            <label class="style-label" for="input1"
+              >Comprimento em metros</label
+            >
             <input type="number" id="input1" />
-            <label for="input2">largura em metros</label>
+            <label class="style-label" for="input2">Largura em metros</label>
 
             <input type="number" id="input2" />
             <button onclick="calcularOrcamento()">Calcular</button>
           </div>
           <div class="display-title-and-table">
-            <span>Veja aqui o que será necessário</span>
+            <span class="style-label">Veja aqui o que será necessário</span>
             <div
               class="display-table"
-              style="background-color: #d9d9d9; width: 705px; height: 378px"
             >
-              <ul id="materialList" style="color: black;">
+              <ul id="materialList" style="color: black">
                 <!-- Lista de materiais aqui -->
               </ul>
             </div>
           </div>
         </div>
       </div>
+      <div class="floating-button">
+        <a href="#" onclick="back()">
+          <img src="../../image/back.png" alt="Botão" />
+        </a>
+      </div>
     </section>
-  
   </body>
   <script>
+    function back() {
+      let caminhoAtual = window.location.pathname;
+      let novoCaminho = caminhoAtual.replace("/laje/", "/home/");
+      window.location.href = novoCaminho;
+    }
     function calcularOrcamento() {
       const input1 = parseFloat(document.getElementById("input1").value);
       const input2 = parseFloat(document.getElementById("input2").value);
 
-
-      if(input1 <= 0 || input2 <= 0 || !input1 || !input2){
-        alert("verifique os campos")
+      if (input1 <= 0 || input2 <= 0 || !input1 || !input2) {
+        alert("verifique os campos");
       } else {
-        
-      const area = input1 * input2;
-      const trilhos = Math.ceil(area) * 2.4;
-      const h8 = Math.ceil(area) * 13;
-      const eps = Math.ceil(area) * 3;
-      const cimento = Math.ceil(area) * 25;
-      const areia = Math.ceil(area) * 1;
-      const arisco = Math.ceil(area) * 1;
-      const brita = Math.ceil(area) * 0.5;
+        const area = input1 * input2;
+        const trilhos = Math.ceil(area) * 2.4;
+        const h8 = Math.ceil(area) * 13;
+        const eps = Math.ceil(area) * 3;
+        const cimento = Math.ceil(area) * 25;
+        const areia = Math.ceil(area) * 1;
+        const arisco = Math.ceil(area) * 1;
+        const brita = Math.ceil(area) * 0.5;
 
-      const materialList = document.getElementById("materialList");
-      materialList.innerHTML = ""; // Limpa a lista
+        const materialList = document.getElementById("materialList");
+        materialList.innerHTML = ""; // Limpa a lista
 
-      const trilhosItem = document.createElement("li");
-      trilhosItem.textContent = `${trilhos} metros de trilhos`;
-      materialList.appendChild(trilhosItem);
+        const trilhosItem = document.createElement("li");
+        trilhosItem.textContent = `${trilhos} metros de trilhos`;
+        materialList.appendChild(trilhosItem);
 
-      const h8Item = document.createElement("li");
-      h8Item.textContent = `${h8} H8` ;
-      materialList.appendChild(h8Item);
+        const h8Item = document.createElement("li");
+        h8Item.textContent = `${h8} H8`;
+        materialList.appendChild(h8Item);
 
-      const epsItem = document.createElement("li");
-      epsItem.textContent = `${eps} placas de isopor` ;
-      materialList.appendChild(epsItem);
+        const epsItem = document.createElement("li");
+        epsItem.textContent = `${eps} placas de isopor`;
+        materialList.appendChild(epsItem);
 
-      const cimentoItem = document.createElement("li");
-      cimentoItem.textContent = `${cimento} Kg de cimento` ;
-      materialList.appendChild(cimentoItem);
+        const cimentoItem = document.createElement("li");
+        cimentoItem.textContent = `${cimento} Kg de cimento`;
+        materialList.appendChild(cimentoItem);
 
-      const areiaItem = document.createElement("li");
-      areiaItem.textContent = `${areia} carro de mão de areia` ;
-      materialList.appendChild(areiaItem);
+        const areiaItem = document.createElement("li");
+        areiaItem.textContent = `${areia} carro de mão de areia`;
+        materialList.appendChild(areiaItem);
 
-      const ariscoItem = document.createElement("li");
-      ariscoItem.textContent = `${arisco} carro de mão de arisco` ;
-      materialList.appendChild(ariscoItem);
+        const ariscoItem = document.createElement("li");
+        ariscoItem.textContent = `${arisco} carro de mão de arisco`;
+        materialList.appendChild(ariscoItem);
 
-      const britaItem = document.createElement("li");
-      britaItem.textContent = `${brita} carro de mão de brita` ;
-      materialList.appendChild(britaItem);
-
-
+        const britaItem = document.createElement("li");
+        britaItem.textContent = `${brita} carro de mão de brita`;
+        materialList.appendChild(britaItem);
+      }
     }
-
-  }
   </script>
 </html>

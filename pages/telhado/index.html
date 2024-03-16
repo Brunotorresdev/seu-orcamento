@@ -12,30 +12,39 @@
         <div class="title">Orçamento para telhado </div>
         <div class="display-menu-row">
           <div class="menu-options">
-            <label for="input1">comprimento em metros</label>
+            <label class="style-label"for="input1">Comprimento em metros</label>
             <input type="number" id="input1" />
-            <label for="input2">lagura em metros</label>
+            <label class="style-label" for="input2">Lagura em metros</label>
 
             <input type="number" id="input2" />
             <button onclick="calcularOrcamento()">Calcular</button>
           </div>
           <div class="display-title-and-table">
-            <span>Veja aqui o que será necessário</span>
+            <span class="style-label">Veja aqui o que será necessário</span>
             <div
               class="display-table" id="materialList"
-              style="background-color: #d9d9d9; width: 705px; height: 378px; color: black;"
             >
           <ul style="color: black;">
-            <li>250 tijolos</li>
-            <li>50 kg de cimento</li>
+            <!-- <li>250 tijolos</li>
+            <li>50 kg de cimento</li> -->
           </ul>
           </div>
           </div>
         </div>
       </div>
+      <div class="floating-button">
+        <a href="#" onclick="back()">
+          <img src="../../image/back.png" alt="Botão" />
+        </a>
+      </div>
     </section>
   </body>
   <script>
+    function back() {
+      let caminhoAtual = window.location.pathname;
+      let novoCaminho = caminhoAtual.replace("/telhado/", "/home/");
+      window.location.href = novoCaminho;
+    }
     function calcularOrcamento() {
       const input1 = parseFloat(document.getElementById("input1").value);
       const input2 = parseFloat(document.getElementById("input2").value);
